@@ -1,0 +1,65 @@
+@startuml
+
+abstract class Cuenta {
+    # Double saldo
+
+    # Integer numeroDeConsignaciones
+
+    # Integer numeroDeRetiros
+
+    # Double porcentajeDeTasaAnual
+
+    # Double comisionMensual
+
+    # {static} String operacionNoValida
+
+    # {static} String operacionValida
+
+    + Cuenta(Double saldo, Double porcentajeDeTasaAnual)
+
+    # {static} boolean esValidaCantidad(Double d)
+
+    + String consignar(Double cantidad)
+
+    + String retirar(Double cantidad)
+
+    # void calcularInteresMensual()
+
+    # void calcularComisionMensual()
+
+    + void extractoMensual()
+
+    + String toString()
+}
+
+class CuentaAhorro{
+    # boolean activa
+
+    + CuentaAhorro(Double saldo, Double porcentajeDeTasaAnual)
+
+    + String retirar(Double cantidad)
+
+    + String consignar(Double cantidad)
+
+    # void calcularComisionMensual()
+
+    + void extractoMensual()
+
+    + String toString()
+}
+
+class CuentaCorriente{
+    # Double sobregiro
+
+    + CuentaCorriente(Double saldo, Double porcentajeDeTasaAnual)
+
+    + String retirar(Double cantidad)
+
+    + String consignar(Double cantidad)
+
+    + String toString()
+}
+
+Cuenta<|--CuentaAhorro
+Cuenta<|--CuentaCorriente
+@enduml
